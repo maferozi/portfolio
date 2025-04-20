@@ -15,26 +15,27 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
+      degree: "Bachelor of Information Technology",
+      school: "PUCIT",
+      mascot: "🎓",
+      year: "2021",
+      achievements: ["cgpa: 3.78/4.00"],
+      skills: ["Problem solving", "DSA", "OOP"],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Completed a Bachelor's degree in Information Technology with a focus on Programming and management.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
-      mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      degree: "FSC (Pre-Engineering)",
+      school: "Punjab College Burewala",
+      mascot: "📚",
+      year: "2019",
+      achievements: ["marks: 97.36%"],
+      skills: ["Mathematics", "Physics", "Chemistry"],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Studied core engineering subjects with an emphasis on mathematics, physics, and computer science.",
     },
   ];
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,7 +60,7 @@ const EducationSection = () => {
   };
 
   return (
-    <section className="min-h-screen relative overflow-hidden py-40 bg-[#04081A]">
+    <section id="#education" className="min-h-screen relative overflow-hidden py-40 bg-[#04081A]">
       {/* Grid Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:50px_50px]" />

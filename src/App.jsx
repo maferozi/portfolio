@@ -25,6 +25,11 @@ export default function App() {
           <Experience />
           <Education />
           <Contact />
+          
+                   {/* <div className='relative z-0'>
+          <Contact />
+          <StarsCanvas />
+        </div> */}
         </>
       ) : (
         // Router Mode: Use routes for navigation

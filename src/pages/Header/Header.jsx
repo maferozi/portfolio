@@ -27,7 +27,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { id: "home", icon: FaHome, text: "Home", path: "/" },
+    { id: "home", icon: FaHome, text: "Home", path: "#home" },
     { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
     {
       id: "experience",
