@@ -54,30 +54,31 @@ const ExperienceCard = ({
 const ExperienceSection = () => {
   const experiences = [
     {
-      icon: Network,
-      title: "WordPress Developer",
-      company: "Fiverr",
-      period: "2019 - 2020",
+      icon: Code2,
+      title: "Full Stack Developer",
+      company: "Webox Systems",
+      period: "July 2024 – Feb 2025",
       description:
-        "Worked on developing and customizing WordPress websites for clients globally.",
+      "Built web apps with the PERN stack, improving backend performance by 30% and increasing user engagement by 25% with optimized React interfaces."
     },
     {
       icon: Layers,
-      title: "Junior Frontend Developer",
-      company: "Sera Programmer",
-      period: "2021 - 2023",
+      title: "Full Stack Development",
+      company: "Webox Systems",
+      period: "Feb 2024 – May 2024",
       description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+        "Completed a 3-month fellowship focused on full-stack web application development. Developed scalable solutions using React, Node.js, and PostgreSQL",
     },
     {
       icon: Code2,
-      title: "JavaScript Developer",
-      company: "OlovJS (Sera Programmer)",
-      period: "2023 - Present",
+      title: "Internship",
+      company: "Bytewise",
+      period: " Jun 2023 - Aug 2023",
       description:
-        "Contributed to developing JavaScript libraries and enhancing framework functionalities.",
+        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
     },
   ];
+  
 
   return (
     <>
