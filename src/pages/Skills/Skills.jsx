@@ -12,6 +12,9 @@ import {
   FaLinux,
   FaFigma,
   FaAws,
+  FaBrain,
+  FaCogs,
+  FaBolt,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -26,10 +29,21 @@ import {
   SiFirebase,
   SiVercel,
   SiVite,
+  SiMysql,
+  SiExpress,
+  SiMqtt,
+  SiDocker,
+  SiGit,
+  SiRsocket,
+  SiOpenai,
+  SiAwsamplify,
+  SiPrisma,
+  SiGithub,
+  SiNodedotjs,
 } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
-import { MdAnimation } from "react-icons/md";
+import { MdAnimation, MdAssistant } from "react-icons/md";
 import { FcWorkflow } from "react-icons/fc";
 
 const SkillCard = ({ icon: Icon, title, skills, color }) => (
@@ -104,8 +118,8 @@ const SkillsSection = () => {
           icon: <FaNodeJs className="w-4 h-4 text-[#339933]" />,
         },
         {
-          name: "Python",
-          icon: <FaPython className="w-4 h-4 text-[#3776AB]" />,
+          name: "express",
+          icon: <SiExpress className="w-4 h-4 text-[#339933]" />,
         },
         {
           name: "PostgreSQL",
@@ -116,54 +130,58 @@ const SkillsSection = () => {
           icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
         },
         {
+          name: "MySQL",
+          icon: <SiMysql className="w-4 h-4 text-[#336791]" />,
+        },
+        {
           name: "REST APIs",
           icon: <BsGrid1X2 className="w-4 h-4 text-[#FF6C37]" />,
         },
         {
-          name: "GraphQL",
-          icon: <SiGraphql className="w-4 h-4 text-[#E10098]" />,
-        },
-      ],
-    },
-    {
-      icon: Layout,
-      title: "UI/UX Design",
-      color: "text-purple-400",
-      skills: [
-        { name: "Figma", icon: <FaFigma className="w-4 h-4 text-[#F24E1E]" /> },
-        {
-          name: "Responsive Design",
-          icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
+          name: "MQTT",
+          icon: <SiMqtt className="w-4 h-4 text-[#FFCC00]" />, // Added MQTT for your real-time communication setup
         },
         {
-          name: "Wireframing",
-          icon: <BsGrid1X2 className="w-4 h-4 text-[#9CA3AF]" />,
-        },
-        {
-          name: "Prototyping",
-          icon: <MdAnimation className="w-4 h-4 text-[#F59E0B]" />,
+          name: "WebSockets",
+          icon: <SiRsocket className="w-4 h-4 text-[#F39C12]" />, // Added WebSockets for real-time apps
         },
       ],
     },
     {
       icon: Cloud,
-      title: "Cloud & DevOps",
-      color: "text-orange-400",
+      title: "AI & Machine Learning",
+      color: "text-indigo-400",
       skills: [
-        { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
+        { name: "OpenAI", icon: <SiOpenai className="w-4 h-4 text-[#FF6611]" /> },
         {
-          name: "Docker",
-          icon: <FaDocker className="w-4 h-4 text-[#2496ED]" />,
+          name: "Machine Learning",
+          icon: <FaBrain className="w-4 h-4 text-[#FF9800]" />,
         },
-        { name: "CI/CD", icon: <FcWorkflow className="w-4 h-4" /> },
         {
-          name: "Kubernetes",
-          icon: <BsGrid1X2 className="w-4 h-4 text-[#326CE5]" />,
+          name: "AI Models",
+          icon: <MdAssistant className="w-4 h-4 text-[#FF5722]" />,
         },
-        { name: "Git", icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" /> },
-        { name: "Linux", icon: <FaLinux className="w-4 h-4 text-[#FCC624]" /> },
       ],
-    },
+    },    
+    {
+      icon: Cloud,
+      title: "Cloud Computing & Infrastructure",
+      color: "text-indigo-400",
+      skills: [
+        {
+          name: "Cloud Computing",
+          icon: <SiAwsamplify className="w-4 h-4 text-[#FF9900]" />,
+        },
+        {
+          name: "Docker & Containers",
+          icon: <SiDocker className="w-4 h-4 text-[#2496ED]" />,
+        },
+        {
+          name: "Database Management (Prisma)",
+          icon: <SiPrisma className="w-4 h-4 text-[#2D3748]" />,
+        },
+      ],
+    },    
     {
       icon: Cpu,
       title: "Tools & Technologies",
@@ -174,42 +192,42 @@ const SkillsSection = () => {
           icon: <TbBrandVscode className="w-4 h-4 text-[#007ACC]" />,
         },
         { name: "Jest", icon: <SiJest className="w-4 h-4 text-[#C21325]" /> },
-        {
-          name: "Webpack",
-          icon: <SiWebpack className="w-4 h-4 text-[#8DD6F9]" />,
-        },
-        { name: "Redux", icon: <SiRedux className="w-4 h-4 text-[#764ABC]" /> },
-        {
-          name: "Firebase",
-          icon: <SiFirebase className="w-4 h-4 text-[#FFCA28]" />,
-        },
+
         { name: "Vercel", icon: <SiVercel className="w-4 h-4 text-white" /> },
-        { name: "Vite", icon: <SiVite className="w-4 h-4 text-[#646CFF]" /> },
+        {
+          name: "GitHub",
+          icon: <SiGithub className="w-4 h-4 text-[#181717]" />,
+        },
+        {
+          name: "MQTT",
+          icon: <SiMqtt className="w-4 h-4 text-[#FFCC00]" />,
+        },
       ],
-    },
+    },    
     {
       icon: Paintbrush,
-      title: "Creative Skills",
+      title: "Creative & Technical Innovation",
       color: "text-yellow-400",
       skills: [
         {
-          name: "UI Animation",
-          icon: <MdAnimation className="w-4 h-4 text-[#FF4081]" />,
+          name: "AI Integration",
+          icon: <FaBrain className="w-4 h-4 text-[#FF4081]" />,
         },
         {
-          name: "SVG Animation",
-          icon: <MdAnimation className="w-4 h-4 text-[#00C853]" />,
+          name: "Real-Time Applications",
+          icon: <FaBolt className="w-4 h-4 text-[#00C853]" />,
         },
         {
-          name: "3D Modeling",
-          icon: <Cpu className="w-4 h-4 text-[#7C4DFF]" />,
+          name: "Interactive Experiences",
+          icon: <FaCogs className="w-4 h-4 text-[#7C4DFF]" />,
         },
         {
-          name: "Motion Graphics",
-          icon: <MdAnimation className="w-4 h-4 text-[#FF6D00]" />,
+          name: "Full-Stack Development",
+          icon: <SiNodedotjs className="w-4 h-4 text-[#FF6D00]" />,
         },
       ],
-    },
+    }
+    
   ];
 
   return (
