@@ -11,7 +11,7 @@ import Education from "./pages/Education/Education";
 import { Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [isOnePage, setIsOnePage] = useState(false); // Toggle state
+  const [isOnePage, setIsOnePage] = useState(true); // Toggle state
 
   return (
     <>
