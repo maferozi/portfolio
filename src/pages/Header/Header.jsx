@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ isOnePage, scrollToSection, refs = {} }) {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(() => {
     const path = location.pathname.substring(1) || "home";
@@ -22,27 +22,17 @@ export default function Header() {
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navLinks = [
-    { id: "home", icon: FaHome, text: "Home", path: "#home" },
-    { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
-    {
-      id: "experience",
-      icon: FaBriefcase,
-      text: "Experience",
-      path: "/experience",
-    },
-    {
-      id: "education",
-      icon: FaGraduationCap,
-      text: "Education",
-      path: "/education",
-    },
-    { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
-    { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
+    { id: "home", icon: FaHome, text: "Home", path: "/", ref: refs.heroRef },
+    { id: "skills", icon: FaCode, text: "Skills", path: "/skills", ref: refs.skillsRef },
+    { id: "experience", icon: FaBriefcase, text: "Experience", path: "/experience", ref: refs.experienceRef },
+    { id: "education", icon: FaGraduationCap, text: "Education", path: "/education", ref: refs.educationRef },
+    { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" }, // Optional for one-page
+    { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact", ref: refs.contactRef },
   ];
 
   return (
@@ -52,8 +42,8 @@ export default function Header() {
           <nav className="bg-gray-900/90 backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5">
             {/* Mobile Menu Button */}
             <div className="flex justify-between items-center md:hidden px-2">
-              <Link to="/" className="text-white font-bold">Portfolio</Link>
-              <button 
+              <span className="text-white font-bold">Portfolio</span>
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white p-2"
               >
@@ -62,33 +52,44 @@ export default function Header() {
             </div>
 
             {/* Navigation Links */}
-            <div className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
+            <div className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-1 lg:gap-2 py-4 md:py-0">
-                {navLinks.map(({ id, icon: Icon, text, path }) => (
-                  <Link
-                    key={id}
-                    to={path}
-                    onClick={() => {
-                      setActiveLink(id);
-                      setIsMenuOpen(false);
-                    }}
-                    className={`px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
-                      transition-all duration-300 flex items-center gap-2
-                      hover:bg-white/10 
-                      ${
-                        activeLink === id
-                          ? "bg-white/15 text-white"
-                          : "text-gray-300 hover:text-white"
-                      }
-                    `}
-                  >
-                    <Icon
-                      className={`text-base ${
-                        activeLink === id ? "scale-110" : ""
-                      }`}
-                    />
-                    <span className="inline">{text}</span>
-                  </Link>
+                {navLinks.map(({ id, icon: Icon, text, path, ref }) => (
+                  isOnePage ? (
+                    <button
+                      key={id}
+                      onClick={() => {
+                        setActiveLink(id);
+                        scrollToSection(ref);
+                        setIsMenuOpen(false);
+                      }}
+                      className={`px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
+                        transition-all duration-300 flex items-center gap-2
+                        hover:bg-white/10 
+                        ${activeLink === id ? "bg-white/15 text-white" : "text-gray-300 hover:text-white"}
+                      `}
+                    >
+                      <Icon className={`text-base ${activeLink === id ? "scale-110" : ""}`} />
+                      <span>{text}</span>
+                    </button>
+                  ) : (
+                    <Link
+                      key={id}
+                      to={path}
+                      onClick={() => {
+                        setActiveLink(id);
+                        setIsMenuOpen(false);
+                      }}
+                      className={`px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
+                        transition-all duration-300 flex items-center gap-2
+                        hover:bg-white/10 
+                        ${activeLink === id ? "bg-white/15 text-white" : "text-gray-300 hover:text-white"}
+                      `}
+                    >
+                      <Icon className={`text-base ${activeLink === id ? "scale-110" : ""}`} />
+                      <span>{text}</span>
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
