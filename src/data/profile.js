@@ -125,7 +125,7 @@ export const projects = [
     id: "ai-lawyer",
     name: "AI Lawyer",
     file: "ai-lawyer.ts",
-    kind: "Retrieval-augmented assistant",
+    kind: "Personal project, retrieval-augmented assistant",
     year: "2024",
     summary:
       "Answers questions on Pakistani criminal law. Legal PDFs are split into chunks, embedded with OpenAI and indexed in Pinecone; each question retrieves the closest passages and a LangChain QA chain answers from them, with chat history in PostgreSQL.",
