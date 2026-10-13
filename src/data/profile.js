@@ -10,7 +10,6 @@ export const person = {
   shortName: "Asad Ferozi",
   handle: "maferozi",
   role: "Software engineer building enterprise AI products",
-  status: "Applying for a research master's in AI, Fall 2027",
   location: "Lahore, Pakistan",
   email: "maferozi373@gmail.com",
   github: "https://github.com/maferozi",
@@ -130,7 +129,7 @@ export const projects = [
     kind: "Personal project, retrieval-augmented assistant",
     year: "2024",
     summary:
-      "Answers questions on Pakistani criminal law. Legal PDFs are split into chunks, embedded with OpenAI and indexed in Pinecone; each question retrieves the closest passages and a LangChain QA chain answers from them, with chat history in PostgreSQL.",
+      "Answers questions on Pakistani criminal law from the statute itself: legal PDFs are chunked, embedded with OpenAI and indexed in Pinecone, and a LangChain QA chain answers from the retrieved passages. A retrieval evaluation over 40 labelled questions and 30 configurations found the best setup, which reached the right section for 32 of 40 questions.",
     stack: ["React", "Express", "LangChain", "OpenAI", "Pinecone"],
     links: [
       { label: "Frontend code", href: "https://github.com/maferozi/AI-LAWYER-REACT" },
@@ -180,20 +179,8 @@ export const education = [
     degree: "BS Information Technology",
     school: "PUCIT, University of the Punjab",
     years: "2021 – 2025",
-    result: "CGPA 3.78 / 4.00 (85.40%)",
-    note: "Highlights: Design & Analysis of Algorithms A, Artificial Intelligence A, Computer Organization A, Linear Algebra A.",
-  },
-  {
-    degree: "Intermediate (FSc Pre-Engineering)",
-    school: "Punjab College for Boys, Burewala",
-    years: "2021",
-    result: "97.4%, A+",
-  },
-  {
-    degree: "Matriculation (Science)",
-    school: "Govt. Higher Secondary School Sheikh Fazal, Burewala",
-    years: "2019",
-    result: "95.4%, A+",
+    result: "CGPA 3.78 / 4.00",
+    note: "Relevant coursework: Artificial Intelligence, Machine Learning, Design and Analysis of Algorithms, Data Structures and Algorithms, Discrete Structures, Linear Algebra, Probability and Statistics, Database Systems, Computer Networks, Operating Systems, Information Security, Cyber Security.",
   },
 ];
 

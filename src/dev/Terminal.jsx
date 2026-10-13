@@ -56,7 +56,6 @@ function buildCommands({ onSwitchMode, clear }) {
           <div>
             <div className="t-strong">{person.name}</div>
             <div>{person.role}.</div>
-            <div className="t-dim">{person.status}.</div>
             <div className="t-dim">{person.location}</div>
           </div>
         </div>,

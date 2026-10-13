@@ -35,7 +35,6 @@ export default function Professional() {
         <div className="pro-hero__text">
           <h1 className="pro-hero__name">{person.name}</h1>
           <p className="pro-hero__role">{person.role}.</p>
-          <p className="pro-hero__status">{person.status}.</p>
 
           <div className="pro-actions">
             <a className="pro-button pro-button--primary" href={person.cv} download>

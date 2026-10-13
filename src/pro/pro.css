@@ -77,11 +77,6 @@
   max-width: 30ch;
 }
 
-.pro-hero__status {
-  margin: 10px 0 0;
-  color: var(--slate);
-}
-
 .pro-hero__photo {
   display: block;
 }

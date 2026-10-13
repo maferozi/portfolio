@@ -5,7 +5,7 @@ import { notes } from "./data/notes.js";
 export const SITE_URL = "https://maferozi.vercel.app";
 
 const DEFAULT_DESCRIPTION =
-  "Muhammad Asad Ferozi, software engineer building enterprise AI products. Applying for a research master's in AI, Fall 2027.";
+  "Muhammad Asad Ferozi, software engineer building enterprise AI products: RAG, hybrid search and full-stack systems.";
 
 const pages = {
   "/": {
