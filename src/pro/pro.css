@@ -1,0 +1,326 @@
+/* Professional mode: a researcher's homepage. Cool paper, slate ink, and the
+   oxblood of Asad's portrait as the only accent. */
+
+:root[data-mode="pro"] {
+  --mist: #f3f5f7;
+  --paper: #fbfcfd;
+  --ink: #16212c;
+  --slate: #566270;
+  --rule: #d6dce2;
+  --oxblood: #7a1f2b;
+  --oxblood-soft: #f4e7e9;
+
+  --serif: "Source Serif 4", "Charter", Georgia, serif;
+  --sans: "IBM Plex Sans", "Avenir Next", system-ui, sans-serif;
+
+  --focus: var(--oxblood);
+  --switch-bg: rgba(251, 252, 253, 0.85);
+  --switch-border: var(--rule);
+  --switch-ink: var(--slate);
+  --switch-active-bg: var(--ink);
+  --switch-active-ink: var(--paper);
+  --switch-font: var(--sans);
+
+  background: var(--mist);
+  color: var(--ink);
+}
+
+:root[data-mode="pro"] body {
+  background: var(--mist);
+}
+
+.pro {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 28px;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.pro-skip {
+  position: absolute;
+  left: -999px;
+}
+.pro-skip:focus {
+  left: 16px;
+  top: 16px;
+  background: var(--paper);
+  padding: 8px 12px;
+}
+
+/* Hero */
+.pro-hero {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 48px;
+  align-items: end;
+  padding: 112px 0 56px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pro-hero__name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0 0 20px;
+  max-width: 12ch;
+}
+
+.pro-hero__role {
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 30ch;
+}
+
+.pro-hero__status {
+  margin: 10px 0 0;
+  color: var(--slate);
+}
+
+.pro-hero__photo {
+  display: block;
+}
+
+.pro-hero__photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+  /* The white studio background sits on an oxblood offset, so the photo
+     reads as part of the page rather than a sticker on it. */
+  box-shadow: 14px 14px 0 var(--oxblood);
+}
+
+.pro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.pro-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.pro-button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.pro-button--primary {
+  background: var(--oxblood);
+  border-color: var(--oxblood);
+  color: var(--paper);
+}
+.pro-button--primary:hover {
+  background: #5f1621;
+  border-color: #5f1621;
+}
+
+.pro-icon-link {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  color: var(--slate);
+}
+.pro-icon-link:hover {
+  color: var(--oxblood);
+  background: var(--oxblood-soft);
+}
+
+/* Sections: name in a left column, content on the right, like an academic CV */
+.pro-section {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 680px);
+  gap: 40px;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pro-section__title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--oxblood);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pro-lead {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.pro-subhead {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 28px 0 8px;
+}
+
+.pro-interests {
+  margin: 0;
+  padding-left: 20px;
+}
+.pro-interests li::marker {
+  color: var(--oxblood);
+}
+
+.pro-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pro-entry,
+.pro-project {
+  margin-bottom: 28px;
+}
+.pro-entry:last-child,
+.pro-project:last-child {
+  margin-bottom: 0;
+}
+
+.pro-entry__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.pro-entry__head h3,
+.pro-project h3 {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pro-entry__org {
+  font-weight: 400;
+}
+
+.pro-entry__when {
+  font-size: 14px;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.pro-entry__result {
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+.pro-points {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.pro-points li {
+  margin-bottom: 4px;
+}
+
+.pro-project p {
+  margin: 6px 0 0;
+}
+
+.pro-project__stack {
+  font-size: 15px;
+  color: var(--slate);
+}
+
+.pro-project__links {
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+}
+.pro-project__links a,
+.pro-contact a {
+  color: var(--oxblood);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.pro-muted {
+  color: var(--slate);
+  font-size: 15px;
+  margin: 6px 0 0;
+}
+
+.pro-skills {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.pro-skills div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+}
+.pro-skills dt {
+  font-weight: 600;
+}
+.pro-skills dd {
+  margin: 0;
+}
+
+.pro-contact {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.4vw, 32px);
+  margin: 0 0 8px;
+}
+
+.pro-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 28px 0 40px;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+@media (max-width: 760px) {
+  .pro {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+  .pro-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 84px;
+  }
+  .pro-hero__photo {
+    order: -1;
+    width: 160px;
+  }
+  .pro-hero__photo img {
+    box-shadow: 8px 8px 0 var(--oxblood);
+  }
+  .pro-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 36px 0;
+  }
+  .pro-skills div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

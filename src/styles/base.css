@@ -1,0 +1,114 @@
+/* Shared reset and the mode switch. Each mode has its own stylesheet. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus, #7a1f2b);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Mode switch: one control, styled by whichever mode is active. */
+.mode-switch {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--switch-border);
+  background: var(--switch-bg);
+  backdrop-filter: blur(10px);
+  font-family: var(--switch-font);
+  font-size: 13px;
+}
+
+.mode-switch button {
+  border: 0;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--switch-ink);
+  background: transparent;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.mode-switch button.is-active {
+  background: var(--switch-active-bg);
+  color: var(--switch-active-ink);
+}
+
+.mode-switch__hint {
+  margin: 0 6px 0 4px;
+  padding: 1px 6px;
+  border: 1px solid var(--switch-border);
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--switch-ink);
+  opacity: 0.7;
+}
+
+@media (max-width: 520px) {
+  .mode-switch {
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+  }
+  .mode-switch__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

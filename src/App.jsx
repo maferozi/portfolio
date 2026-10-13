@@ -1,65 +1,64 @@
-import React, { useState, useRef } from "react";
-import "./assets/css/index.css";
-import Experience from "./pages/Experience/Experience";
-import Contact from "./pages/Contact/Contact";
-import Projects from "./pages/Projects/Projects";
-import Header from "./pages/Header/Header";
-import Hero from "./pages/Hero/Hero";
-import Skills from "./pages/Skills/Skills";
-import Education from "./pages/Education/Education";
-import { Route, Routes } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import ModeSwitch from "./components/ModeSwitch.jsx";
+import Professional from "./pro/Professional.jsx";
+import Developer from "./dev/Developer.jsx";
+
+const STORAGE_KEY = "portfolio-mode";
+
+// Mode comes from the URL first (so links like ?mode=dev work), then the
+// visitor's last choice, then defaults to professional.
+function initialMode() {
+  const fromUrl = new URLSearchParams(window.location.search).get("mode");
+  if (fromUrl === "dev" || fromUrl === "pro") return fromUrl;
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "dev" || saved === "pro") return saved;
+  } catch {
+    // Storage can be blocked; the default still works.
+  }
+  return "pro";
+}
 
 export default function App() {
-  const [isOnePage, setIsOnePage] = useState(true); // Toggle between modes
+  const [mode, setMode] = useState(initialMode);
 
-  // Section refs for scrolling
-  const heroRef = useRef(null);
-  const skillsRef = useRef(null);
-  const experienceRef = useRef(null);
-  const educationRef = useRef(null);
-  const contactRef = useRef(null);
-
-  const scrollToSection = (ref) => {
-    if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
+  const changeMode = useCallback((next) => {
+    setMode(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // Not remembered; nothing else depends on it.
     }
-  };
+    const url = new URL(window.location.href);
+    url.searchParams.set("mode", next);
+    window.history.replaceState(null, "", url);
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.mode = mode;
+    document.title =
+      mode === "dev" ? "~/asad — Muhammad Asad Ferozi" : "Muhammad Asad Ferozi";
+  }, [mode]);
+
+  // "D" toggles the mode, unless the visitor is typing somewhere.
+  useEffect(() => {
+    const onKey = (e) => {
+      const typing = ["INPUT", "TEXTAREA"].includes(e.target.tagName);
+      if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === "d" || e.key === "D") changeMode(mode === "dev" ? "pro" : "dev");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mode, changeMode]);
 
   return (
     <>
-<Header
-  isOnePage={isOnePage}
-  scrollToSection={scrollToSection}
-  refs={{ heroRef, skillsRef, experienceRef, educationRef, contactRef }}
-/>
-
-      {isOnePage ? (
-        <>
-          <div ref={heroRef}>
-            <Hero />
-          </div>
-          <div ref={skillsRef}>
-            <Skills />
-          </div>
-          <div ref={experienceRef}>
-            <Experience />
-          </div>
-          <div ref={educationRef}>
-            <Education />
-          </div>
-          <div ref={contactRef}>
-            <Contact />
-          </div>
-        </>
+      <ModeSwitch mode={mode} onChange={changeMode} />
+      {mode === "dev" ? (
+        <Developer onSwitchMode={changeMode} />
       ) : (
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/projects" element={<Projects />} />
-        </Routes>
+        <Professional />
       )}
     </>
   );
