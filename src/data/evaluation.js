@@ -25,5 +25,5 @@ export const evaluation = {
     "With 40 questions, one question moves a score by 0.025, so differences under about 0.1 are noise.",
     "Only retrieval is measured. Answers were not generated or graded.",
   ],
-  link: null,
+  link: "https://github.com/maferozi/AI-LAWYER-EXPRESS/tree/main/eval",
 };
