@@ -16,6 +16,7 @@ function hashOf(text) {
 const toIdent = (s) =>
   s
     .replace(/\s*\(.*?\)/g, "")
+    .replace(/\s+API$/, "")
     .replace(/\+\+/g, "pp")
     .replace(/\.js$/i, "JS")
     .split(/[^A-Za-z0-9]+/)
@@ -82,7 +83,7 @@ export default function Developer({ onSwitchMode }) {
             <span className="dev-prompt">$</span> ls projects/
           </h2>
           <div className="dev-projects">
-            {projects.map((p) => (
+            {projects.filter((p) => !p.minor).map((p) => (
               <article
                 key={p.id}
                 id={`proj-${p.id}`}
@@ -113,6 +114,29 @@ export default function Developer({ onSwitchMode }) {
                 </div>
               </article>
             ))}
+            {/* Smaller builds share one card, listed like a directory. */}
+            <article className="dev-card dev-card--list">
+              <div className="dev-card__tab">
+                <span>more/</span>
+                <span className="dev-card__meta">smaller builds</span>
+              </div>
+              <ul className="dev-card__body dev-minor">
+                {projects.filter((p) => p.minor).map((p) => (
+                  <li key={p.id} id={`proj-${p.id}`}>
+                    <h3>{p.name}</h3>
+                    <p>{p.summary}</p>
+                    <p className="dev-minor__meta">
+                      {p.stack.join(" · ")}
+                      {p.links.map((l) => (
+                        <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                          {l.label}
+                        </a>
+                      ))}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </article>
           </div>
         </section>
 
