@@ -3,6 +3,8 @@ import "./dev.css";
 import Terminal from "./Terminal.jsx";
 import CommandPalette from "./CommandPalette.jsx";
 import { person, experience, projects, skills } from "../data/profile.js";
+import { notes } from "../data/notes.js";
+import { Link, navigate } from "../router.jsx";
 
 // Deterministic short "commit hashes" for the git-log styling of experience.
 function hashOf(text) {
@@ -43,10 +45,13 @@ export default function Developer({ onSwitchMode }) {
   const actions = useMemo(
     () => [
       { label: "Type in the terminal", run: () => terminalRef.current?.focus() },
-      { label: "Go to projects", run: () => go("dev-projects") },
-      { label: "Go to experience", run: () => go("dev-experience") },
-      { label: "Go to stack", run: () => go("dev-stack") },
-      { label: "Go to contact", run: () => go("dev-contact") },
+      { label: "Go to projects", run: () => go("projects") },
+      { label: "Go to experience", run: () => go("experience") },
+      { label: "Go to stack", run: () => go("stack") },
+      { label: "Go to notes", run: () => go("notes") },
+      { label: "Go to contact", run: () => go("contact") },
+      { label: "Read the Parental Eye case study", run: () => navigate("/work/parental-eye") },
+      { label: "Read the AI Lawyer case study", run: () => navigate("/work/ai-lawyer") },
       { label: "Download CV (PDF)", run: () => terminalRef.current?.run("cv") },
       { label: "Copy email address", run: copyEmail },
       { label: "Open GitHub", run: () => window.open(person.github, "_blank", "noopener") },
@@ -62,10 +67,11 @@ export default function Developer({ onSwitchMode }) {
 
       <nav className="dev-nav" aria-label="Sections">
         <span className="dev-nav__path">~/asad</span>
-        <a href="#dev-projects">projects/</a>
-        <a href="#dev-experience">git log</a>
-        <a href="#dev-stack">stack.ts</a>
-        <a href="#dev-contact">contact.sh</a>
+        <a href="#projects">projects/</a>
+        <a href="#experience">git log</a>
+        <a href="#stack">stack.ts</a>
+        <a href="#notes">notes/</a>
+        <a href="#contact">contact.sh</a>
         <CommandPalette actions={actions} />
       </nav>
 
@@ -78,11 +84,11 @@ export default function Developer({ onSwitchMode }) {
       </header>
 
       <main>
-        <section id="dev-projects" className="dev-section" aria-labelledby="dev-projects-title">
-          <h2 id="dev-projects-title" className="dev-section__title">
+        <section id="projects" className="dev-section" aria-labelledby="projects-title">
+          <h2 id="projects-title" className="dev-section__title">
             <span className="dev-prompt">$</span> ls projects/
           </h2>
-          <div className="dev-projects">
+          <div className="projects">
             {projects.filter((p) => !p.minor).map((p) => (
               <article
                 key={p.id}
@@ -102,8 +108,9 @@ export default function Developer({ onSwitchMode }) {
                       <li key={s}>{s}</li>
                     ))}
                   </ul>
-                  {p.links.length > 0 && (
+                  {(p.links.length > 0 || p.caseStudy) && (
                     <p className="dev-card__links">
+                      {p.caseStudy && <Link to={p.caseStudy}>case-study.md</Link>}
                       {p.links.map((l) => (
                         <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
                           {l.label}
@@ -140,8 +147,8 @@ export default function Developer({ onSwitchMode }) {
           </div>
         </section>
 
-        <section id="dev-experience" className="dev-section" aria-labelledby="dev-exp-title">
-          <h2 id="dev-exp-title" className="dev-section__title">
+        <section id="experience" className="dev-section" aria-labelledby="experience-title">
+          <h2 id="experience-title" className="dev-section__title">
             <span className="dev-prompt">$</span> git log --author=asad
           </h2>
           <ol className="dev-log">
@@ -167,8 +174,8 @@ export default function Developer({ onSwitchMode }) {
           </ol>
         </section>
 
-        <section id="dev-stack" className="dev-section" aria-labelledby="dev-stack-title">
-          <h2 id="dev-stack-title" className="dev-section__title">
+        <section id="stack" className="dev-section" aria-labelledby="stack-title">
+          <h2 id="stack-title" className="dev-section__title">
             <span className="dev-prompt">$</span> cat stack.ts
           </h2>
           <pre className="dev-code">
@@ -191,11 +198,25 @@ export default function Developer({ onSwitchMode }) {
           </pre>
         </section>
 
-        <section id="dev-contact" className="dev-section" aria-labelledby="dev-contact-title">
-          <h2 id="dev-contact-title" className="dev-section__title">
+        <section id="notes" className="dev-section" aria-labelledby="notes-title">
+          <h2 id="notes-title" className="dev-section__title">
+            <span className="dev-prompt">$</span> ls notes/
+          </h2>
+          <ul className="dev-notes">
+            {notes.map((n) => (
+              <li key={n.slug}>
+                <Link to={`/writing/${n.slug}`}>{n.slug}.md</Link>
+                <span>{n.title}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="contact" className="dev-section" aria-labelledby="contact-title">
+          <h2 id="contact-title" className="dev-section__title">
             <span className="dev-prompt">$</span> ./contact.sh
           </h2>
-          <div className="dev-contact">
+          <div className="contact">
             <pre className="dev-code">
               <code>
                 <span className="k">curl</span> -X POST mailto:<span className="s">{person.email}</span>{" \\\n"}

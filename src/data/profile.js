@@ -108,6 +108,8 @@ export const projects = [
       { label: "Frontend code", href: "https://github.com/maferozi/parental-eye-react" },
       { label: "Backend code", href: "https://github.com/maferozi/parental-eye-express" },
     ],
+    caseStudy: "/work/parental-eye",
+    image: { src: "/work/parental-eye.webp", alt: "Parental Eye home page", width: 1200, height: 400 },
     featured: true,
   },
   {
@@ -134,6 +136,7 @@ export const projects = [
       { label: "Frontend code", href: "https://github.com/maferozi/AI-LAWYER-REACT" },
       { label: "Backend code", href: "https://github.com/maferozi/AI-LAWYER-EXPRESS" },
     ],
+    caseStudy: "/work/ai-lawyer",
   },
   {
     id: "be-my-eye",
@@ -203,5 +206,9 @@ export const skills = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "PHP", "Java", "C++"] },
 ];
 
-export const certification =
-  "Supervised Machine Learning: Regression and Classification, Stanford University and DeepLearning.AI (Coursera), Jan 2025";
+export const certification = {
+  name: "Supervised Machine Learning: Regression and Classification",
+  issuer: "Stanford University and DeepLearning.AI (Coursera)",
+  date: "January 2025",
+  url: "https://www.coursera.org/account/accomplishments/verify/B25EMBF6ZVMT",
+};

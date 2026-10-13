@@ -8,6 +8,8 @@ import {
   education,
   skills,
 } from "../data/profile.js";
+import { notes } from "../data/notes.js";
+import { navigate } from "../router.jsx";
 
 const PROMPT = "asad@portfolio:~$";
 const BOOT_COMMAND = "whoami";
@@ -83,6 +85,32 @@ function buildCommands({ onSwitchMode, clear }) {
           </span>
         )),
         <span key="more" className="t-dim">Select a name to jump to its card below.</span>,
+      ],
+    },
+    notes: {
+      about: "things I've written",
+      run: () => [
+        ...notes.map((n) => (
+          <span key={n.slug}>
+            <button type="button" className="t-link" onClick={() => navigate(`/writing/${n.slug}`)}>
+              {n.slug}.md
+            </button>
+            <span className="t-dim">  {n.title}</span>
+          </span>
+        )),
+      ],
+    },
+    "case-study": {
+      about: "read a project write-up",
+      run: () => [
+        <span key="pe">
+          <button type="button" className="t-link" onClick={() => navigate("/work/parental-eye")}>parental-eye</button>
+          <span className="t-dim">  real-time tracking with geofences</span>
+        </span>,
+        <span key="al">
+          <button type="button" className="t-link" onClick={() => navigate("/work/ai-lawyer")}>ai-lawyer</button>
+          <span className="t-dim">  RAG for criminal law, with a retrieval evaluation</span>
+        </span>,
       ],
     },
     experience: {

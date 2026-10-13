@@ -391,6 +391,29 @@ kbd {
   color: var(--rose);
 }
 
+/* notes/ */
+.dev-notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 14.5px;
+}
+.dev-notes li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.dev-notes a {
+  color: var(--cyan);
+  min-width: 280px;
+}
+.dev-notes span {
+  color: var(--dim);
+}
+
 /* git log */
 .dev-log {
   list-style: none;

@@ -9,6 +9,8 @@ import {
   skills,
   certification,
 } from "../data/profile.js";
+import { notes } from "../data/notes.js";
+import { Link } from "../router.jsx";
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "../components/Icons.jsx";
 
 function Section({ id, title, children }) {
@@ -104,10 +106,25 @@ export default function Professional() {
                     {p.kind}, {p.year}
                   </span>
                 </div>
+                {p.image && (
+                  <img
+                    className="pro-project__image"
+                    src={p.image.src}
+                    alt={p.image.alt}
+                    width={p.image.width}
+                    height={p.image.height}
+                    loading="lazy"
+                  />
+                )}
                 <p>{p.summary}</p>
                 <p className="pro-project__stack">Built with {p.stack.join(", ")}</p>
-                {p.links.length > 0 && (
+                {(p.links.length > 0 || p.caseStudy) && (
                   <p className="pro-project__links">
+                    {p.caseStudy && (
+                      <Link to={p.caseStudy} className="pro-project__case">
+                        Read the case study
+                      </Link>
+                    )}
                     {p.links.map((l) => (
                       <a key={l.href} href={l.href}>
                         {l.label}
@@ -133,7 +150,24 @@ export default function Professional() {
               {e.note && <p className="pro-muted">{e.note}</p>}
             </div>
           ))}
-          <p className="pro-muted">Certificate: {certification}.</p>
+          <p className="pro-muted">
+            Certificate: <a href={certification.url}>{certification.name}</a>, {certification.issuer},{" "}
+            {certification.date}.
+          </p>
+        </Section>
+
+        <Section id="writing" title="Writing">
+          <ul className="pro-notes">
+            {notes.map((n) => (
+              <li key={n.slug}>
+                <Link to={`/writing/${n.slug}`}>{n.title}</Link>
+                <span className="pro-muted"> {n.summary}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="pro-project__links">
+            <Link to="/writing">All notes</Link>
+          </p>
         </Section>
 
         <Section id="skills" title="Skills">

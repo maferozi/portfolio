@@ -1,0 +1,278 @@
+/* Long-form pages (case studies, notes). Colours and type come from the active
+   mode, mapped to a small set of doc tokens. */
+
+:root[data-mode="pro"] {
+  --doc-bg: var(--mist);
+  --doc-ink: var(--ink);
+  --doc-muted: var(--slate);
+  --doc-rule: var(--rule);
+  --doc-accent: var(--oxblood);
+  --doc-panel: var(--paper);
+  --doc-heading: var(--serif);
+  --doc-body: var(--serif);
+  --doc-ui: var(--sans);
+  --doc-code: "IBM Plex Mono", ui-monospace, monospace;
+  --doc-heading-weight: 600;
+}
+
+:root[data-mode="dev"] {
+  --doc-bg: var(--night);
+  --doc-ink: var(--text);
+  --doc-muted: var(--dim);
+  --doc-rule: var(--line);
+  --doc-accent: var(--rose);
+  --doc-panel: var(--panel);
+  --doc-heading: var(--mono);
+  --doc-body: var(--sans);
+  --doc-ui: var(--mono);
+  --doc-code: var(--mono);
+  --doc-heading-weight: 600;
+}
+
+.doc {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  color: var(--doc-ink);
+  font-family: var(--doc-body);
+}
+
+.doc-nav {
+  padding: 24px 0 0;
+  font-family: var(--doc-ui);
+  font-size: 15px;
+}
+.doc-nav a {
+  color: var(--doc-muted);
+  text-decoration: none;
+}
+.doc-nav a:hover {
+  color: var(--doc-accent);
+}
+
+.doc-header {
+  padding: 56px 0 28px;
+  border-bottom: 1px solid var(--doc-rule);
+  margin-bottom: 32px;
+}
+.doc-eyebrow {
+  font-family: var(--doc-ui);
+  font-size: 15px;
+  color: var(--doc-accent);
+  margin: 0 0 10px;
+}
+.doc-header h1 {
+  font-family: var(--doc-heading);
+  font-weight: var(--doc-heading-weight);
+  font-size: clamp(32px, 5vw, 46px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.doc-lead {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--doc-muted);
+  margin: 16px 0 0;
+}
+
+.doc-article {
+  font-size: 18px;
+  line-height: 1.7;
+}
+.doc-article h2 {
+  font-family: var(--doc-heading);
+  font-weight: var(--doc-heading-weight);
+  font-size: 25px;
+  margin: 44px 0 10px;
+}
+.doc-article h3 {
+  font-family: var(--doc-heading);
+  font-size: 19px;
+  margin: 28px 0 6px;
+}
+.doc-article p,
+.doc-article li {
+  max-width: 68ch;
+}
+.doc-article a {
+  color: var(--doc-accent);
+  text-underline-offset: 3px;
+}
+.doc-article code {
+  font-family: var(--doc-code);
+  font-size: 0.88em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--doc-panel);
+  border: 1px solid var(--doc-rule);
+}
+
+.doc-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px 24px;
+  margin: 0 0 32px;
+  font-family: var(--doc-ui);
+  font-size: 15px;
+}
+.doc-facts dt {
+  color: var(--doc-muted);
+}
+.doc-facts dd {
+  margin: 2px 0 0;
+}
+
+.doc-figure {
+  margin: 28px 0;
+}
+.doc-figure svg,
+.doc-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--doc-rule);
+  border-radius: 10px;
+  background: var(--doc-panel);
+}
+.doc-figure figcaption {
+  font-family: var(--doc-ui);
+  font-size: 14px;
+  color: var(--doc-muted);
+  margin-top: 8px;
+}
+
+.doc-table-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+.doc-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--doc-ui);
+  font-size: 14.5px;
+}
+.doc-table th,
+.doc-table td {
+  text-align: right;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--doc-rule);
+  white-space: nowrap;
+}
+.doc-table th:first-child,
+.doc-table td:first-child {
+  text-align: left;
+}
+.doc-table thead th {
+  color: var(--doc-muted);
+  font-weight: 500;
+}
+.doc-table tr.is-best td {
+  color: var(--doc-accent);
+  font-weight: 600;
+}
+
+.doc-note {
+  font-family: var(--doc-ui);
+  font-size: 15px;
+  color: var(--doc-muted);
+}
+
+.doc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-family: var(--doc-ui);
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+
+/* Diagram strokes and text follow the mode. */
+.diagram .box {
+  fill: var(--doc-bg);
+  stroke: var(--doc-muted);
+  stroke-width: 1.2;
+}
+.diagram .box--accent {
+  stroke: var(--doc-accent);
+  stroke-width: 2;
+}
+.diagram .label {
+  fill: var(--doc-ink);
+  font-family: var(--doc-ui);
+  font-size: 14px;
+  font-weight: 600;
+}
+.diagram .sub {
+  fill: var(--doc-muted);
+  font-family: var(--doc-ui);
+  font-size: 12px;
+}
+.diagram .edge {
+  stroke: var(--doc-muted);
+  stroke-width: 1.4;
+  fill: none;
+}
+.diagram .edge-label {
+  fill: var(--doc-muted);
+  font-family: var(--doc-ui);
+  font-size: 11.5px;
+}
+.diagram .arrow {
+  fill: var(--doc-muted);
+}
+
+.doc-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 56px;
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--doc-rule);
+  font-family: var(--doc-ui);
+  font-size: 14px;
+  color: var(--doc-muted);
+}
+.doc-footer a {
+  color: inherit;
+}
+
+/* Writing index */
+.notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.notes-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--doc-rule);
+}
+.notes-list h2 {
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+.notes-list h2 a {
+  color: var(--doc-ink);
+  text-decoration: none;
+}
+.notes-list h2 a:hover {
+  color: var(--doc-accent);
+}
+.notes-list p {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .doc {
+    padding: 0 18px;
+  }
+  .doc-nav {
+    padding-top: 64px;
+  }
+  .doc-header {
+    padding-top: 28px;
+  }
+  .doc-article {
+    font-size: 17px;
+  }
+}
