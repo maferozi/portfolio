@@ -91,10 +91,12 @@ function Evaluation() {
           <li key={l.slice(0, 24)}>{l}</li>
         ))}
       </ul>
-      {link && (
+      {link ? (
         <p className="doc-links">
-          <a href={link}>Evaluation code and raw results</a>
+          <a href={link}>Evaluation code, questions and all 30 configurations</a>
         </p>
+      ) : (
+        <p className="doc-note">Showing 8 of the 30 configurations tested.</p>
       )}
     </>
   );
@@ -142,16 +144,15 @@ export default function AiLawyer() {
       <h2>Measuring retrieval</h2>
       <p>
         In this design the answer can only be as good as the passages retrieved, so retrieval is the part worth measuring
-        first. I wrote a set of everyday questions about the Penal Code, each labelled with the section that answers it,
-        and tested how often that section appears in the retrieved passages.
+        first: how often does the passage that answers a question actually reach the model?
       </p>
       <Evaluation />
 
       <h2>What I would improve next</h2>
       <ul>
-        <li>Show the section numbers the answer was drawn from, so users can check the source.</li>
-        <li>Grade full answers, not only retrieval, with a reviewed set of questions and reference answers.</li>
-        <li>Use the best retrieval setting from the evaluation in the live system.</li>
+        <li>Switch the app to 200-word chunks, the best setting measured above, and re-run the test with the production embeddings.</li>
+        <li>Bridge everyday English and legal terms (for example “murder” and qatl-i-amd) with a glossary or query expansion.</li>
+        <li>Show the section numbers each answer was drawn from, and grade full answers, not only retrieval.</li>
       </ul>
     </DocLayout>
   );
