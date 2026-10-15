@@ -193,9 +193,17 @@ export const skills = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "PHP", "Java", "C++"] },
 ];
 
-export const certification = {
-  name: "Supervised Machine Learning: Regression and Classification",
-  issuer: "Stanford University and DeepLearning.AI (Coursera)",
-  date: "January 2025",
-  url: "https://www.coursera.org/account/accomplishments/verify/B25EMBF6ZVMT",
-};
+export const certifications = [
+  {
+    name: "Ultimate AWS Certified Cloud Practitioner (CLF-C02), course completion",
+    issuer: "Udemy, instructor Stephane Maarek",
+    date: "October 2026",
+    url: "https://ude.my/UC-69218a3e-13b6-4336-8cce-e7560a554348",
+  },
+  {
+    name: "Supervised Machine Learning: Regression and Classification",
+    issuer: "Stanford University and DeepLearning.AI (Coursera)",
+    date: "January 2025",
+    url: "https://www.coursera.org/account/accomplishments/verify/B25EMBF6ZVMT",
+  },
+];

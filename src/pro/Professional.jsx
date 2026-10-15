@@ -7,7 +7,7 @@ import {
   projects,
   education,
   skills,
-  certification,
+  certifications,
 } from "../data/profile.js";
 import { notes } from "../data/notes.js";
 import { Link } from "../router.jsx";
@@ -149,10 +149,11 @@ export default function Professional() {
               {e.note && <p className="pro-muted">{e.note}</p>}
             </div>
           ))}
-          <p className="pro-muted">
-            Certificate: <a href={certification.url}>{certification.name}</a>, {certification.issuer},{" "}
-            {certification.date}.
-          </p>
+          {certifications.map((c) => (
+            <p key={c.url} className="pro-muted">
+              Certificate: <a href={c.url}>{c.name}</a>, {c.issuer}, {c.date}.
+            </p>
+          ))}
         </Section>
 
         <Section id="writing" title="Writing">
