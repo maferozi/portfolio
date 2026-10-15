@@ -195,14 +195,17 @@ export const skills = [
 
 export const certifications = [
   {
-    name: "Ultimate AWS Certified Cloud Practitioner (CLF-C02), course completion",
-    issuer: "Udemy, instructor Stephane Maarek",
-    date: "October 2026",
-  },
-  {
     name: "Supervised Machine Learning: Regression and Classification",
     issuer: "Stanford University and DeepLearning.AI (Coursera)",
     date: "January 2025",
     url: "https://www.coursera.org/account/accomplishments/verify/B25EMBF6ZVMT",
+  },
+];
+
+export const courses = [
+  {
+    name: "Ultimate AWS Certified Cloud Practitioner (CLF-C02)",
+    issuer: "Udemy, Stephane Maarek",
+    date: "October 2026",
   },
 ];

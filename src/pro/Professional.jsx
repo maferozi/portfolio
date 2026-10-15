@@ -8,6 +8,7 @@ import {
   education,
   skills,
   certifications,
+  courses,
 } from "../data/profile.js";
 import { notes } from "../data/notes.js";
 import { Link } from "../router.jsx";
@@ -152,6 +153,11 @@ export default function Professional() {
           {certifications.map((c) => (
             <p key={c.name} className="pro-muted">
               Certificate: {c.url ? <a href={c.url}>{c.name}</a> : c.name}, {c.issuer}, {c.date}.
+            </p>
+          ))}
+          {courses.map((c) => (
+            <p key={c.name} className="pro-muted">
+              Course completed: {c.name}, {c.issuer}, {c.date}.
             </p>
           ))}
         </Section>
