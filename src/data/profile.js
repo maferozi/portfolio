@@ -198,7 +198,6 @@ export const certifications = [
     name: "Ultimate AWS Certified Cloud Practitioner (CLF-C02), course completion",
     issuer: "Udemy, instructor Stephane Maarek",
     date: "October 2026",
-    url: "https://ude.my/UC-69218a3e-13b6-4336-8cce-e7560a554348",
   },
   {
     name: "Supervised Machine Learning: Regression and Classification",

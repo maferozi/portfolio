@@ -150,8 +150,8 @@ export default function Professional() {
             </div>
           ))}
           {certifications.map((c) => (
-            <p key={c.url} className="pro-muted">
-              Certificate: <a href={c.url}>{c.name}</a>, {c.issuer}, {c.date}.
+            <p key={c.name} className="pro-muted">
+              Certificate: {c.url ? <a href={c.url}>{c.name}</a> : c.name}, {c.issuer}, {c.date}.
             </p>
           ))}
         </Section>
